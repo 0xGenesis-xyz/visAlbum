@@ -7,11 +7,13 @@
 //
 
 #import "PhotoViewController.h"
+#import "PHAsset+Utility.h"
+#import "MetadataViewController.h"
 
 @interface PhotoViewController () <UIScrollViewDelegate, PHPhotoLibraryChangeObserver>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) UIImageView *imageView;
 
 @end
 
@@ -69,18 +71,25 @@
         
         [self.imageView sizeToFit];
         self.scrollView.contentSize = self.imageView.image ? self.imageView.image.size : CGSizeZero;
+        //[self.scrollView setZoomScale:0.5 animated:YES];
     }];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.destinationViewController isKindOfClass:[MetadataViewController class]]) {
+        MetadataViewController *metadataViewController = (MetadataViewController *)segue.destinationViewController;
+        [self.asset requestMetadataWithCompletionBlock:^(NSDictionary *metadata) {
+            metadataViewController.metadata = metadata;
+        }];
+    }
 }
-*/
+
 
 #pragma mark - PHPhotoLibraryChangeObserver
 

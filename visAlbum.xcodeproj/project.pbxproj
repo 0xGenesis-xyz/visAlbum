@@ -21,6 +21,8 @@
 		384D24E51CC62920003C6430 /* CIImage+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 384D24E01CC62920003C6430 /* CIImage+Convenience.m */; };
 		384D24E61CC62920003C6430 /* NSIndexSet+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 384D24E21CC62920003C6430 /* NSIndexSet+Convenience.m */; };
 		384D24E71CC62920003C6430 /* UICollectionView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 384D24E41CC62920003C6430 /* UICollectionView+Convenience.m */; };
+		384D24EC1CC8B830003C6430 /* PHAsset+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 384D24EB1CC8B82F003C6430 /* PHAsset+Utility.m */; };
+		384D24EF1CC8BE44003C6430 /* MetadataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 384D24EE1CC8BE44003C6430 /* MetadataViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,10 @@
 		384D24E21CC62920003C6430 /* NSIndexSet+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+Convenience.m"; sourceTree = "<group>"; };
 		384D24E31CC62920003C6430 /* UICollectionView+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Convenience.h"; sourceTree = "<group>"; };
 		384D24E41CC62920003C6430 /* UICollectionView+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Convenience.m"; sourceTree = "<group>"; };
+		384D24EA1CC8B82F003C6430 /* PHAsset+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PHAsset+Utility.h"; path = "PHAsset-Utility-master/PHAsset+Utility.h"; sourceTree = "<group>"; };
+		384D24EB1CC8B82F003C6430 /* PHAsset+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PHAsset+Utility.m"; path = "PHAsset-Utility-master/PHAsset+Utility.m"; sourceTree = "<group>"; };
+		384D24ED1CC8BE44003C6430 /* MetadataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetadataViewController.h; sourceTree = "<group>"; };
+		384D24EE1CC8BE44003C6430 /* MetadataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetadataViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,8 @@
 				384D24B91CC51A93003C6430 /* PhotoCollectionViewCell.m */,
 				384D24D61CC52854003C6430 /* PhotoViewController.h */,
 				384D24D71CC52854003C6430 /* PhotoViewController.m */,
+				384D24ED1CC8BE44003C6430 /* MetadataViewController.h */,
+				384D24EE1CC8BE44003C6430 /* MetadataViewController.m */,
 				384D24A71CC4D1F0003C6430 /* Main.storyboard */,
 				384D24AA1CC4D1F0003C6430 /* Assets.xcassets */,
 				384D24AC1CC4D1F0003C6430 /* LaunchScreen.storyboard */,
@@ -117,6 +125,8 @@
 		384D24E91CC6293C003C6430 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				384D24EA1CC8B82F003C6430 /* PHAsset+Utility.h */,
+				384D24EB1CC8B82F003C6430 /* PHAsset+Utility.m */,
 				384D24DF1CC62920003C6430 /* CIImage+Convenience.h */,
 				384D24E01CC62920003C6430 /* CIImage+Convenience.m */,
 				384D24E11CC62920003C6430 /* NSIndexSet+Convenience.h */,
@@ -201,10 +211,12 @@
 				384D24A61CC4D1F0003C6430 /* ViewController.m in Sources */,
 				384D24DB1CC60FA1003C6430 /* AlbumCollectionViewController.m in Sources */,
 				384D24E71CC62920003C6430 /* UICollectionView+Convenience.m in Sources */,
+				384D24EF1CC8BE44003C6430 /* MetadataViewController.m in Sources */,
 				384D24A31CC4D1F0003C6430 /* AppDelegate.m in Sources */,
 				384D24A01CC4D1F0003C6430 /* main.m in Sources */,
 				384D24E61CC62920003C6430 /* NSIndexSet+Convenience.m in Sources */,
 				384D24DE1CC62805003C6430 /* AlbumCollectionViewCell.m in Sources */,
+				384D24EC1CC8B830003C6430 /* PHAsset+Utility.m in Sources */,
 				384D24E51CC62920003C6430 /* CIImage+Convenience.m in Sources */,
 				384D24D81CC52854003C6430 /* PhotoViewController.m in Sources */,
 				384D24BA1CC51A93003C6430 /* PhotoCollectionViewCell.m in Sources */,
