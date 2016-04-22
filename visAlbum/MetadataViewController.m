@@ -42,10 +42,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    
+    
     NSDictionary *exif = [self.metadata valueForKey:@"{Exif}"];
     NSDictionary *gps = [self.metadata valueForKey:@"{GPS}"];
     NSDictionary *tiff = [self.metadata valueForKey:@"{TIFF}"];
-    //NSLog(@"%@", self.metadata);
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     self.colorModel.text = [self.metadata valueForKey:@"ColorModel"];
@@ -61,7 +62,7 @@
     self.longitude.text = [numberFormatter stringFromNumber:[gps valueForKey:@"Longitude"]];
     self.dateTime.text = [tiff valueForKey:@"DateTime"];
     self.device.text = [tiff valueForKey:@"Model"];
-    self.tag.text = [self.photoTags valueForKey:@"test"];
+    self.tag.text = [self.photoTags valueForKey:self.identifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,7 +93,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    [self.photoTags setValue:textField.text forKey:@"test"];
+    [self.photoTags setValue:textField.text forKey:self.identifier];
     [self.photoTags writeToFile:[self applicationDocumentsDirectoryFile] atomically:YES];
     return YES;
 }

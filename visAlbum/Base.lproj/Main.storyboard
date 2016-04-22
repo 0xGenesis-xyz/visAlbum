@@ -121,7 +121,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="Kpm-JT-qAu">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="FE8-6P-k6P">
-                            <stepper key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minimumValue="80" maximumValue="160" stepValue="10" id="PzM-2L-w3V">
+                            <stepper key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minimumValue="80" maximumValue="160" stepValue="5" id="PzM-2L-w3V">
                                 <rect key="frame" x="486" y="7" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -185,7 +185,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="PBn-nr-BKe">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Yxp-2J-adZ">
-                            <stepper key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minimumValue="80" maximumValue="160" stepValue="10" id="h2g-pS-uEn">
+                            <stepper key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minimumValue="80" maximumValue="160" stepValue="5" id="h2g-pS-uEn">
                                 <rect key="frame" x="486" y="7" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>

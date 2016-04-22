@@ -86,6 +86,11 @@
     // Pass the selected object to the new view controller.
     if ([segue.destinationViewController isKindOfClass:[MetadataViewController class]]) {
         MetadataViewController *metadataViewController = (MetadataViewController *)segue.destinationViewController;
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+        metadataViewController.identifier = [dateFormatter stringFromDate:self.asset.creationDate];
+        
         [self.asset requestMetadataWithCompletionBlock:^(NSDictionary *metadata) {
             metadataViewController.metadata = metadata;
         }];

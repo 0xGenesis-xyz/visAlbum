@@ -71,7 +71,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
 }
 
 - (IBAction)zoomView:(UIStepper *)sender {
-    NSLog(@"%lf", self.zoomControl.value);
+    //NSLog(@"%lf", self.zoomControl.value);
     CGFloat scale = [UIScreen mainScreen].scale;
     self.assetGridThumbnailSize = CGSizeMake(self.zoomControl.value*scale, self.zoomControl.value*scale);
     [self.collectionView reloadData];
@@ -108,7 +108,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
     // Dequeue an AAPLGridViewCell.
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellReuseIdentifier forIndexPath:indexPath];
     cell.representedAssetIdentifier = asset.localIdentifier;
-    NSLog(@"%lf, %lf", self.assetGridThumbnailSize.width, self.assetGridThumbnailSize.height);
+    //NSLog(@"%lf, %lf", self.assetGridThumbnailSize.width, self.assetGridThumbnailSize.height);
     // Request an image for the asset from the PHCachingImageManager.
     [self.imageManager requestImageForAsset:asset
                                  targetSize:self.assetGridThumbnailSize

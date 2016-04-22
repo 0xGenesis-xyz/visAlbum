@@ -10,6 +10,7 @@
 
 @interface MetadataViewController : UIViewController
 
+@property (strong, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSDictionary *metadata;
 
 @end

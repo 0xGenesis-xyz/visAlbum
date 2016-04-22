@@ -67,7 +67,7 @@ static NSString * const CollectionSegue = @"showCollection";
 }
 
 - (IBAction)zoomView:(UIStepper *)sender {
-    NSLog(@"%lf", self.zoomControl.value);
+    //NSLog(@"%lf", self.zoomControl.value);
     [self.collectionView reloadData];
 }
 
