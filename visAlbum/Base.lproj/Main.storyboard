@@ -422,6 +422,9 @@
                                 <rect key="frame" x="188" y="446" width="180" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="0nH-CB-X1J" id="NJR-gr-6DV"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -440,6 +443,7 @@
                         <outlet property="pixelHeight" destination="wQC-4l-2gc" id="Ths-Ia-QT3"/>
                         <outlet property="pixelWidth" destination="059-aR-QjM" id="Mdl-Ad-oIN"/>
                         <outlet property="profileName" destination="utq-W5-WMc" id="aLE-gr-2Q1"/>
+                        <outlet property="tag" destination="qrZ-oj-wrx" id="g93-Ee-JQK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7JY-bP-9pY" userLabel="First Responder" sceneMemberID="firstResponder"/>

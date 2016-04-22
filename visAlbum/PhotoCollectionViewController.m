@@ -118,7 +118,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
                                   // Set the cell's thumbnail image if it's still showing the same asset.
                                   if ([cell.representedAssetIdentifier isEqualToString:asset.localIdentifier]) {
                                       cell.thumbnailImage = result;
-                                      NSLog(@"%@, %lf, %lf", cell.representedAssetIdentifier, result.size.width, result.size.height);
+                                      //NSLog(@"%@, %lf, %lf", cell.representedAssetIdentifier, result.size.width, result.size.height);
                                   }
                               }];
     

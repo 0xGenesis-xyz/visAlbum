@@ -8,7 +8,7 @@
 
 #import "MetadataViewController.h"
 
-@interface MetadataViewController ()
+@interface MetadataViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *colorModel;
 @property (weak, nonatomic) IBOutlet UILabel *pixelHeight;
@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *longitude;
 @property (weak, nonatomic) IBOutlet UILabel *dateTime;
 @property (weak, nonatomic) IBOutlet UILabel *device;
+@property (weak, nonatomic) IBOutlet UITextField *tag;
+
+@property (strong, nonatomic) NSMutableDictionary *photoTags;
 
 @end
 
@@ -31,6 +34,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self createEditableCopyOfDatabaseIfNeeded];
+    
+    self.photoTags = [[NSMutableDictionary alloc] initWithContentsOfFile:[self applicationDocumentsDirectoryFile]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -55,11 +61,58 @@
     self.longitude.text = [numberFormatter stringFromNumber:[gps valueForKey:@"Longitude"]];
     self.dateTime.text = [tiff valueForKey:@"DateTime"];
     self.device.text = [tiff valueForKey:@"Model"];
+    self.tag.text = [self.photoTags valueForKey:@"test"];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSString *)applicationDocumentsDirectoryFile {
+    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [documentDirectory stringByAppendingPathComponent:@"photoTags.plist"];
+    return path;
+}
+
+- (void)createEditableCopyOfDatabaseIfNeeded {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *writableDBPath = [self applicationDocumentsDirectoryFile];
+    if (![fileManager fileExistsAtPath:writableDBPath]) {
+        NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"photoTags.plist"];
+        NSError *error;
+        BOOL success = [fileManager copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];
+        if (!success) {
+            NSAssert1(0, @"fail: '%@'. ", [error localizedDescription]);
+        }
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    [self.photoTags setValue:textField.text forKey:@"test"];
+    [self.photoTags writeToFile:[self applicationDocumentsDirectoryFile] atomically:YES];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    CGRect frame = textField.frame;
+    int offset = frame.origin.y + 32 - (self.view.frame.size.height - 256.0); //key board height: 216
+    
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    
+    if(offset > 0)
+        self.view.frame = CGRectMake(0.0f, -offset, self.view.frame.size.width, self.view.frame.size.height);
+    
+    [UIView commitAnimations];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 }
 
 /*

@@ -23,6 +23,22 @@
 		384D24E71CC62920003C6430 /* UICollectionView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 384D24E41CC62920003C6430 /* UICollectionView+Convenience.m */; };
 		384D24EC1CC8B830003C6430 /* PHAsset+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 384D24EB1CC8B82F003C6430 /* PHAsset+Utility.m */; };
 		384D24EF1CC8BE44003C6430 /* MetadataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 384D24EE1CC8BE44003C6430 /* MetadataViewController.m */; };
+		384D24FC1CCA00AB003C6430 /* zrx1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24F01CCA00AB003C6430 /* zrx1.jpg */; };
+		384D24FD1CCA00AB003C6430 /* zrx2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24F11CCA00AB003C6430 /* zrx2.jpg */; };
+		384D24FE1CCA00AB003C6430 /* zrx3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24F21CCA00AB003C6430 /* zrx3.jpg */; };
+		384D24FF1CCA00AB003C6430 /* zrx4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24F31CCA00AB003C6430 /* zrx4.jpg */; };
+		384D25001CCA00AB003C6430 /* zrx5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24F41CCA00AB003C6430 /* zrx5.jpg */; };
+		384D25011CCA00AB003C6430 /* zrx6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24F51CCA00AB003C6430 /* zrx6.jpg */; };
+		384D25021CCA00AB003C6430 /* zrx7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24F61CCA00AB003C6430 /* zrx7.jpg */; };
+		384D25031CCA00AB003C6430 /* zrx8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24F71CCA00AB003C6430 /* zrx8.jpg */; };
+		384D25041CCA00AB003C6430 /* zrx9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24F81CCA00AB003C6430 /* zrx9.jpg */; };
+		384D25051CCA00AB003C6430 /* zrx10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24F91CCA00AB003C6430 /* zrx10.jpg */; };
+		384D25061CCA00AB003C6430 /* zrx11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24FA1CCA00AB003C6430 /* zrx11.jpg */; };
+		384D25071CCA00AB003C6430 /* zrx12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D24FB1CCA00AB003C6430 /* zrx12.jpg */; };
+		384D250C1CCA0320003C6430 /* zrx13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D25091CCA0320003C6430 /* zrx13.jpg */; };
+		384D250D1CCA0320003C6430 /* zrx14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D250A1CCA0320003C6430 /* zrx14.jpg */; };
+		384D250E1CCA0320003C6430 /* zrx15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D250B1CCA0320003C6430 /* zrx15.jpg */; };
+		384D25101CCA1519003C6430 /* photoTags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 384D250F1CCA1519003C6430 /* photoTags.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +72,22 @@
 		384D24EB1CC8B82F003C6430 /* PHAsset+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PHAsset+Utility.m"; path = "PHAsset-Utility-master/PHAsset+Utility.m"; sourceTree = "<group>"; };
 		384D24ED1CC8BE44003C6430 /* MetadataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetadataViewController.h; sourceTree = "<group>"; };
 		384D24EE1CC8BE44003C6430 /* MetadataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetadataViewController.m; sourceTree = "<group>"; };
+		384D24F01CCA00AB003C6430 /* zrx1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx1.jpg; path = pic/zrx1.jpg; sourceTree = "<group>"; };
+		384D24F11CCA00AB003C6430 /* zrx2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx2.jpg; path = pic/zrx2.jpg; sourceTree = "<group>"; };
+		384D24F21CCA00AB003C6430 /* zrx3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx3.jpg; path = pic/zrx3.jpg; sourceTree = "<group>"; };
+		384D24F31CCA00AB003C6430 /* zrx4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx4.jpg; path = pic/zrx4.jpg; sourceTree = "<group>"; };
+		384D24F41CCA00AB003C6430 /* zrx5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx5.jpg; path = pic/zrx5.jpg; sourceTree = "<group>"; };
+		384D24F51CCA00AB003C6430 /* zrx6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx6.jpg; path = pic/zrx6.jpg; sourceTree = "<group>"; };
+		384D24F61CCA00AB003C6430 /* zrx7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx7.jpg; path = pic/zrx7.jpg; sourceTree = "<group>"; };
+		384D24F71CCA00AB003C6430 /* zrx8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx8.jpg; path = pic/zrx8.jpg; sourceTree = "<group>"; };
+		384D24F81CCA00AB003C6430 /* zrx9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx9.jpg; path = pic/zrx9.jpg; sourceTree = "<group>"; };
+		384D24F91CCA00AB003C6430 /* zrx10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx10.jpg; path = pic/zrx10.jpg; sourceTree = "<group>"; };
+		384D24FA1CCA00AB003C6430 /* zrx11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx11.jpg; path = pic/zrx11.jpg; sourceTree = "<group>"; };
+		384D24FB1CCA00AB003C6430 /* zrx12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx12.jpg; path = pic/zrx12.jpg; sourceTree = "<group>"; };
+		384D25091CCA0320003C6430 /* zrx13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx13.jpg; path = pic/zrx13.jpg; sourceTree = "<group>"; };
+		384D250A1CCA0320003C6430 /* zrx14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx14.jpg; path = pic/zrx14.jpg; sourceTree = "<group>"; };
+		384D250B1CCA0320003C6430 /* zrx15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx15.jpg; path = pic/zrx15.jpg; sourceTree = "<group>"; };
+		384D250F1CCA1519003C6430 /* photoTags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = photoTags.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,11 +136,13 @@
 				384D24D71CC52854003C6430 /* PhotoViewController.m */,
 				384D24ED1CC8BE44003C6430 /* MetadataViewController.h */,
 				384D24EE1CC8BE44003C6430 /* MetadataViewController.m */,
+				384D250F1CCA1519003C6430 /* photoTags.plist */,
 				384D24A71CC4D1F0003C6430 /* Main.storyboard */,
 				384D24AA1CC4D1F0003C6430 /* Assets.xcassets */,
 				384D24AC1CC4D1F0003C6430 /* LaunchScreen.storyboard */,
 				384D24AF1CC4D1F0003C6430 /* Info.plist */,
 				384D24E91CC6293C003C6430 /* Categories */,
+				384D25081CCA00B0003C6430 /* pic */,
 				384D249E1CC4D1F0003C6430 /* Supporting Files */,
 			);
 			path = visAlbum;
@@ -135,6 +169,28 @@
 				384D24E41CC62920003C6430 /* UICollectionView+Convenience.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		384D25081CCA00B0003C6430 /* pic */ = {
+			isa = PBXGroup;
+			children = (
+				384D24F01CCA00AB003C6430 /* zrx1.jpg */,
+				384D24F11CCA00AB003C6430 /* zrx2.jpg */,
+				384D24F21CCA00AB003C6430 /* zrx3.jpg */,
+				384D24F31CCA00AB003C6430 /* zrx4.jpg */,
+				384D24F41CCA00AB003C6430 /* zrx5.jpg */,
+				384D24F51CCA00AB003C6430 /* zrx6.jpg */,
+				384D24F61CCA00AB003C6430 /* zrx7.jpg */,
+				384D24F71CCA00AB003C6430 /* zrx8.jpg */,
+				384D24F81CCA00AB003C6430 /* zrx9.jpg */,
+				384D24F91CCA00AB003C6430 /* zrx10.jpg */,
+				384D24FA1CCA00AB003C6430 /* zrx11.jpg */,
+				384D24FB1CCA00AB003C6430 /* zrx12.jpg */,
+				384D25091CCA0320003C6430 /* zrx13.jpg */,
+				384D250A1CCA0320003C6430 /* zrx14.jpg */,
+				384D250B1CCA0320003C6430 /* zrx15.jpg */,
+			);
+			name = pic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,8 +251,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				384D250D1CCA0320003C6430 /* zrx14.jpg in Resources */,
+				384D250C1CCA0320003C6430 /* zrx13.jpg in Resources */,
+				384D25051CCA00AB003C6430 /* zrx10.jpg in Resources */,
+				384D25001CCA00AB003C6430 /* zrx5.jpg in Resources */,
+				384D25061CCA00AB003C6430 /* zrx11.jpg in Resources */,
+				384D24FC1CCA00AB003C6430 /* zrx1.jpg in Resources */,
+				384D25031CCA00AB003C6430 /* zrx8.jpg in Resources */,
+				384D24FD1CCA00AB003C6430 /* zrx2.jpg in Resources */,
+				384D25041CCA00AB003C6430 /* zrx9.jpg in Resources */,
+				384D25071CCA00AB003C6430 /* zrx12.jpg in Resources */,
+				384D24FF1CCA00AB003C6430 /* zrx4.jpg in Resources */,
+				384D25011CCA00AB003C6430 /* zrx6.jpg in Resources */,
 				384D24AE1CC4D1F0003C6430 /* LaunchScreen.storyboard in Resources */,
+				384D25101CCA1519003C6430 /* photoTags.plist in Resources */,
+				384D25021CCA00AB003C6430 /* zrx7.jpg in Resources */,
 				384D24AB1CC4D1F0003C6430 /* Assets.xcassets in Resources */,
+				384D24FE1CCA00AB003C6430 /* zrx3.jpg in Resources */,
+				384D250E1CCA0320003C6430 /* zrx15.jpg in Resources */,
 				384D24A91CC4D1F0003C6430 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

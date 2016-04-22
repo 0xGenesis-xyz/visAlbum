@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSArray *sectionFetchResults;
 @property (weak, nonatomic) IBOutlet UIStepper *zoomControl;
+@property (strong, nonatomic) NSMutableArray *data;
 
 @end
 
@@ -161,6 +162,7 @@ static NSString * const CollectionSegue = @"showCollection";
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionCellReuseIdentifier forIndexPath:indexPath];
         cell.name.text = collection.localizedTitle;
     }
+    cell.cover.image = [UIImage imageNamed:self.data[indexPath.item]];
     return cell;
 }
 
@@ -228,6 +230,18 @@ static NSString * const CollectionSegue = @"showCollection";
         }
         
     });
+}
+
+- (NSMutableArray *)data{
+    if (!_data) {
+        _data = @[].mutableCopy;
+        for (int i = 1; i < 16; i ++) {
+            [_data addObject:[NSString stringWithFormat:@"zrx%d.jpg", i]];
+        }
+        [_data addObjectsFromArray:_data];
+        [_data addObjectsFromArray:_data];
+    }
+    return _data;
 }
 
 @end
