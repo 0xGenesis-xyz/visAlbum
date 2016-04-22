@@ -19,6 +19,9 @@
 @property CGSize assetGridThumbnailSize;
 @property CGRect previousPreheatRect;
 
+//@property CGPoint location;
+//@property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *zoom;
+
 @end
 
 @implementation PhotoCollectionViewController
@@ -35,6 +38,8 @@ static NSString * const reuseIdentifier = @"Cell";
     //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
+//    self.zoom.minimumPressDuration = 0.3;
+//    self.zoom.numberOfTouchesRequired = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,11 +76,13 @@ static NSString * const CellReuseIdentifier = @"Cell";
 }
 
 - (IBAction)zoomView:(UIStepper *)sender {
-    //NSLog(@"%lf", self.zoomControl.value);
     CGFloat scale = [UIScreen mainScreen].scale;
     self.assetGridThumbnailSize = CGSizeMake(self.zoomControl.value*scale, self.zoomControl.value*scale);
     [self.collectionView reloadData];
 }
+
+//- (IBAction)zoomViewByGesture:(UILongPressGestureRecognizer *)sender {
+//}
 
 #pragma mark - Navigation
 

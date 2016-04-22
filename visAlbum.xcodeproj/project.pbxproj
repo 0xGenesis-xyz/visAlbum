@@ -39,6 +39,8 @@
 		384D250D1CCA0320003C6430 /* zrx14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D250A1CCA0320003C6430 /* zrx14.jpg */; };
 		384D250E1CCA0320003C6430 /* zrx15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 384D250B1CCA0320003C6430 /* zrx15.jpg */; };
 		384D25101CCA1519003C6430 /* photoTags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 384D250F1CCA1519003C6430 /* photoTags.plist */; };
+		38BDE3851CCA43C000E3E11D /* UIScrollView+UITouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BDE3841CCA43C000E3E11D /* UIScrollView+UITouch.m */; };
+		38BDE3881CCA552200E3E11D /* UIImage+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BDE3871CCA552200E3E11D /* UIImage+Extensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,10 @@
 		384D250A1CCA0320003C6430 /* zrx14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx14.jpg; path = pic/zrx14.jpg; sourceTree = "<group>"; };
 		384D250B1CCA0320003C6430 /* zrx15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zrx15.jpg; path = pic/zrx15.jpg; sourceTree = "<group>"; };
 		384D250F1CCA1519003C6430 /* photoTags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = photoTags.plist; sourceTree = "<group>"; };
+		38BDE3831CCA43C000E3E11D /* UIScrollView+UITouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouch.h"; sourceTree = "<group>"; };
+		38BDE3841CCA43C000E3E11D /* UIScrollView+UITouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouch.m"; sourceTree = "<group>"; };
+		38BDE3861CCA552200E3E11D /* UIImage+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extensions.h"; sourceTree = "<group>"; };
+		38BDE3871CCA552200E3E11D /* UIImage+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extensions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,10 @@
 		384D24E91CC6293C003C6430 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				38BDE3861CCA552200E3E11D /* UIImage+Extensions.h */,
+				38BDE3871CCA552200E3E11D /* UIImage+Extensions.m */,
+				38BDE3831CCA43C000E3E11D /* UIScrollView+UITouch.h */,
+				38BDE3841CCA43C000E3E11D /* UIScrollView+UITouch.m */,
 				384D24EA1CC8B82F003C6430 /* PHAsset+Utility.h */,
 				384D24EB1CC8B82F003C6430 /* PHAsset+Utility.m */,
 				384D24DF1CC62920003C6430 /* CIImage+Convenience.h */,
@@ -287,11 +297,13 @@
 				384D24A31CC4D1F0003C6430 /* AppDelegate.m in Sources */,
 				384D24A01CC4D1F0003C6430 /* main.m in Sources */,
 				384D24E61CC62920003C6430 /* NSIndexSet+Convenience.m in Sources */,
+				38BDE3851CCA43C000E3E11D /* UIScrollView+UITouch.m in Sources */,
 				384D24DE1CC62805003C6430 /* AlbumCollectionViewCell.m in Sources */,
 				384D24EC1CC8B830003C6430 /* PHAsset+Utility.m in Sources */,
 				384D24E51CC62920003C6430 /* CIImage+Convenience.m in Sources */,
 				384D24D81CC52854003C6430 /* PhotoViewController.m in Sources */,
 				384D24BA1CC51A93003C6430 /* PhotoCollectionViewCell.m in Sources */,
+				38BDE3881CCA552200E3E11D /* UIImage+Extensions.m in Sources */,
 				384D24B71CC5163F003C6430 /* PhotoCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

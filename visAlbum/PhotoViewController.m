@@ -8,12 +8,17 @@
 
 #import "PhotoViewController.h"
 #import "PHAsset+Utility.h"
+#import "UIImage+Extensions.h"
 #import "MetadataViewController.h"
 
 @interface PhotoViewController () <UIScrollViewDelegate, PHPhotoLibraryChangeObserver>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
+@property CGFloat scale;
+
+@property CGPoint location;
+@property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *zoom;
 
 @end
 
@@ -22,6 +27,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.zoom.minimumPressDuration = 0.3;
+    self.zoom.numberOfTouchesRequired = 1;
+    
+    UIScreenEdgePanGestureRecognizer *leftEdgeGesture = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(rotateRight:)];
+    leftEdgeGesture.edges = UIRectEdgeLeft;
+    [self.view addGestureRecognizer:leftEdgeGesture];
+    UIScreenEdgePanGestureRecognizer *rightEdgeGesture = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(rotateLeft:)];
+    rightEdgeGesture.edges = UIRectEdgeRight;
+    [self.view addGestureRecognizer:rightEdgeGesture];
+    
     [self.scrollView addSubview:self.imageView];
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
 }
@@ -41,6 +56,44 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)zoomPhoto:(UILongPressGestureRecognizer *)sender {
+    CGPoint location = [sender locationInView:self.view];
+    if ([sender state] == UIGestureRecognizerStateBegan) {
+        self.location = location;
+    }
+    self.scale += 0.1*(self.location.y-location.y);
+    [self.scrollView setZoomScale:self.scale animated:YES];
+    self.location = location;
+}
+
+- (void)rotateRight:(UIScreenEdgePanGestureRecognizer *)sender {
+    if ([sender state] == UIGestureRecognizerStateBegan) {
+        self.imageView.image = [self.imageView.image imageRotatedByDegrees:90];
+        [self resetView];
+    }
+}
+
+- (void)rotateLeft:(UIScreenEdgePanGestureRecognizer *)sender {
+    if ([sender state] == UIGestureRecognizerStateEnded) {
+        self.imageView.image = [self.imageView.image imageRotatedByDegrees:-90];
+        [self resetView];
+    }
+}
+
+- (void)resetView {
+    [self.imageView sizeToFit];
+    self.imageView.frame = CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height);
+    self.scrollView.contentSize = self.imageView.image ? self.imageView.image.size : CGSizeZero;
+    
+    CGSize imageViewSize = self.imageView.bounds.size;
+    CGSize scrollViewSize = self.scrollView.bounds.size;
+    self.scale = MIN(scrollViewSize.width/imageViewSize.width, scrollViewSize.height/imageViewSize.height);
+    
+    self.scrollView.minimumZoomScale = 0.8*self.scale;
+    self.scrollView.maximumZoomScale = 2*self.scale;
+    [self.scrollView setZoomScale:self.scale animated:YES];
 }
 
 - (CGSize)targetSize {
@@ -63,20 +116,16 @@
         
         // Show the UIImageView and use it to display the requested image.
         self.imageView.image = result;
-        
-        [self.imageView sizeToFit];
-        self.scrollView.contentSize = self.imageView.image ? self.imageView.image.size : CGSizeZero;
-        
-        CGSize imageViewSize = self.imageView.bounds.size;
-        CGSize scrollViewSize = self.scrollView.bounds.size;
-        double scale = MIN(scrollViewSize.width/imageViewSize.width, scrollViewSize.height/imageViewSize.height);
-        
-        self.scrollView.minimumZoomScale = 0.8*scale;
-        self.scrollView.maximumZoomScale = 2*scale;
-        [self.scrollView setZoomScale:scale animated:YES];
+        [self resetView];
     }];
 }
 
+//- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    NSLog(@"move: ");
+//    for (UITouch *touch in touches) {
+//        NSLog(@"%f, %f, %f", touch.force, [touch locationInView:self.view].y, [touch previousLocationInView:self.view].y);
+//    }
+//}
 
 #pragma mark - Navigation
 
@@ -105,6 +154,10 @@
 
 //- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
 //    [self.imageView setCenter:CGPointMake(scrollView.bounds.size.width/2, (scrollView.bounds.size.height-44)/2-44)];
+//}
+
+//- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+//    NSLog(@"scale: %f", scale);
 //}
 
 #pragma mark - PHPhotoLibraryChangeObserver

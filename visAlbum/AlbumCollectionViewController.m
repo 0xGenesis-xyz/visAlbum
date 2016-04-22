@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIStepper *zoomControl;
 @property (strong, nonatomic) NSMutableArray *data;
 
+//@property CGPoint location;
+//@property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *zoom;
+
 @end
 
 @implementation AlbumCollectionViewController
@@ -33,6 +36,10 @@ static NSString * const reuseIdentifier = @"Cell";
     //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    self.title = @"Albums";
+//    self.zoom.minimumPressDuration = 0.3;
+//    self.zoom.numberOfTouchesRequired = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,9 +74,17 @@ static NSString * const CollectionSegue = @"showCollection";
 }
 
 - (IBAction)zoomView:(UIStepper *)sender {
-    //NSLog(@"%lf", self.zoomControl.value);
     [self.collectionView reloadData];
 }
+
+//- (IBAction)zoomViewByGesture:(UILongPressGestureRecognizer *)sender {
+//    CGPoint location = [sender locationInView:self.view];
+//    if ([sender state] == UIGestureRecognizerStateBegan) {
+//        self.location = location;
+//    }
+//    self.zoomControl.value += self.location.y-location.y;
+//    [self zoomView:self.zoomControl];
+//}
 
 #pragma mark - Navigation
 
@@ -79,10 +94,10 @@ static NSString * const CollectionSegue = @"showCollection";
     // Pass the selected object to the new view controller.
     if ([segue.destinationViewController isKindOfClass:[PhotoCollectionViewController class]] && [sender isKindOfClass:[UICollectionViewCell class]]) {
         PhotoCollectionViewController *photoCollectionViewController = segue.destinationViewController;
-        UICollectionViewCell *cell = sender;
+        AlbumCollectionViewCell *cell = sender;
         
         // Set the title of the AAPLAssetGridViewController.
-        //photoCollectionViewController.title = cell.textLabel.text;
+        photoCollectionViewController.title = cell.name.text;
         
         // Get the PHFetchResult for the selected section.
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];

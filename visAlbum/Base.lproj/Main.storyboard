@@ -216,8 +216,10 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMr-iC-Yn3">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="1G7-1Z-Pyk" id="uXk-Pf-RLN"/>
+                                    <outletCollection property="gestureRecognizers" destination="opA-b6-iBy" appends="YES" id="9fD-mP-FMd"/>
                                 </connections>
                             </scrollView>
                         </subviews>
@@ -238,9 +240,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="tMr-iC-Yn3" id="LgJ-GA-T4f"/>
+                        <outlet property="zoom" destination="opA-b6-iBy" id="5yz-9o-YeI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kvn-xb-xKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="opA-b6-iBy">
+                    <connections>
+                        <action selector="zoomPhoto:" destination="1G7-1Z-Pyk" id="1UJ-XI-bw8"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3366" y="362"/>
         </scene>
