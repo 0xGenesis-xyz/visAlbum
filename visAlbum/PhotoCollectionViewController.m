@@ -30,7 +30,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
-    //self.collectionView.backgroundColor = [UIColor whiteColor];
     
     // Register cell classes
     //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
@@ -57,8 +56,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
     
     // Determine the size of the thumbnails to request from the PHCachingImageManager
     CGFloat scale = [UIScreen mainScreen].scale;
-    CGSize cellSize = ((UICollectionViewFlowLayout *)self.collectionViewLayout).itemSize;
-    self.assetGridThumbnailSize = CGSizeMake(cellSize.width * scale, cellSize.height * scale);
+    self.assetGridThumbnailSize = CGSizeMake(self.zoomControl.value*scale, self.zoomControl.value*scale);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -74,6 +72,8 @@ static NSString * const CellReuseIdentifier = @"Cell";
 
 - (IBAction)zoomView:(UIStepper *)sender {
     NSLog(@"%lf", self.zoomControl.value);
+    CGFloat scale = [UIScreen mainScreen].scale;
+    self.assetGridThumbnailSize = CGSizeMake(self.zoomControl.value*scale, self.zoomControl.value*scale);
     [self.collectionView reloadData];
 }
 
@@ -108,7 +108,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
     // Dequeue an AAPLGridViewCell.
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellReuseIdentifier forIndexPath:indexPath];
     cell.representedAssetIdentifier = asset.localIdentifier;
-    
+    NSLog(@"%lf, %lf", self.assetGridThumbnailSize.width, self.assetGridThumbnailSize.height);
     // Request an image for the asset from the PHCachingImageManager.
     [self.imageManager requestImageForAsset:asset
                                  targetSize:self.assetGridThumbnailSize
@@ -118,6 +118,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
                                   // Set the cell's thumbnail image if it's still showing the same asset.
                                   if ([cell.representedAssetIdentifier isEqualToString:asset.localIdentifier]) {
                                       cell.thumbnailImage = result;
+                                      NSLog(@"%@, %lf, %lf", cell.representedAssetIdentifier, result.size.width, result.size.height);
                                   }
                               }];
     
@@ -159,9 +160,6 @@ static NSString * const CellReuseIdentifier = @"Cell";
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat scale = [UIScreen mainScreen].scale;
-    CGSize cellSize = ((UICollectionViewFlowLayout *)self.collectionViewLayout).itemSize;
-    self.assetGridThumbnailSize = CGSizeMake(cellSize.width * scale, cellSize.height * scale);
     return CGSizeMake(self.zoomControl.value, self.zoomControl.value);
 }
 

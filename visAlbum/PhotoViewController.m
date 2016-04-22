@@ -31,7 +31,7 @@
 
     [self updateImage];
     
-    //[self.view layoutIfNeeded];
+    [self.view layoutIfNeeded];
 }
 
 - (void)dealloc {
@@ -43,14 +43,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.imageView;
-}
-
 - (CGSize)targetSize {
     CGFloat scale = [UIScreen mainScreen].scale;
     CGSize targetSize = CGSizeMake(CGRectGetWidth(self.scrollView.bounds) * scale, CGRectGetHeight(self.scrollView.bounds) * scale);
-    NSLog(@"%lf,%lf", targetSize.width, targetSize.height);
     return targetSize;
 }
 
@@ -71,7 +66,14 @@
         
         [self.imageView sizeToFit];
         self.scrollView.contentSize = self.imageView.image ? self.imageView.image.size : CGSizeZero;
-        //[self.scrollView setZoomScale:0.5 animated:YES];
+        
+        CGSize imageViewSize = self.imageView.bounds.size;
+        CGSize scrollViewSize = self.scrollView.bounds.size;
+        double scale = MIN(scrollViewSize.width/imageViewSize.width, scrollViewSize.height/imageViewSize.height);
+        
+        self.scrollView.minimumZoomScale = 0.8*scale;
+        self.scrollView.maximumZoomScale = 2*scale;
+        [self.scrollView setZoomScale:scale animated:YES];
     }];
 }
 
@@ -90,6 +92,15 @@
     }
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.imageView;
+}
+
+//- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+//    [self.imageView setCenter:CGPointMake(scrollView.bounds.size.width/2, (scrollView.bounds.size.height-44)/2-44)];
+//}
 
 #pragma mark - PHPhotoLibraryChangeObserver
 
@@ -110,14 +121,6 @@
             [self updateImage];
         }
     });
-}
-
-- (void)setScrollView:(UIScrollView *)scrollView {
-    _scrollView = scrollView;
-    _scrollView.minimumZoomScale = 0.5;
-    _scrollView.maximumZoomScale = 2.0;
-    _scrollView.delegate = self;
-    self.scrollView.contentSize = self.imageView.image ? self.imageView.image.size : CGSizeZero;
 }
 
 - (UIImageView *)imageView {
