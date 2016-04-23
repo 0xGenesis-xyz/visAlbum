@@ -15,6 +15,7 @@
 @interface PhotoCollectionViewController () <PHPhotoLibraryChangeObserver>
 
 @property (weak, nonatomic) IBOutlet UIStepper *zoomControl;
+@property (strong, nonatomic) NSArray *zoomStep;
 @property (strong, nonatomic) PHCachingImageManager *imageManager;
 @property CGSize assetGridThumbnailSize;
 @property CGRect previousPreheatRect;
@@ -38,6 +39,7 @@ static NSString * const reuseIdentifier = @"Cell";
     //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
+    self.zoomStep = [NSArray arrayWithObjects:@0, @70, @90, @120, @185, nil];
 //    self.zoom.minimumPressDuration = 0.3;
 //    self.zoom.numberOfTouchesRequired = 1;
 }
@@ -61,7 +63,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
     
     // Determine the size of the thumbnails to request from the PHCachingImageManager
     CGFloat scale = [UIScreen mainScreen].scale;
-    self.assetGridThumbnailSize = CGSizeMake(self.zoomControl.value*scale, self.zoomControl.value*scale);
+    self.assetGridThumbnailSize = CGSizeMake([self getGridSize]*scale, [self getGridSize]*scale);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -77,8 +79,14 @@ static NSString * const CellReuseIdentifier = @"Cell";
 
 - (IBAction)zoomView:(UIStepper *)sender {
     CGFloat scale = [UIScreen mainScreen].scale;
-    self.assetGridThumbnailSize = CGSizeMake(self.zoomControl.value*scale, self.zoomControl.value*scale);
+    self.assetGridThumbnailSize = CGSizeMake([self getGridSize]*scale, [self getGridSize]*scale);
     [self.collectionView reloadData];
+}
+
+- (CGFloat)getGridSize {
+    NSUInteger index = (int)self.zoomControl.value;
+    NSNumber *size = [self.zoomStep objectAtIndex:index];
+    return [size floatValue];
 }
 
 //- (IBAction)zoomViewByGesture:(UILongPressGestureRecognizer *)sender {
@@ -167,7 +175,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.zoomControl.value, self.zoomControl.value);
+    return CGSizeMake([self getGridSize], [self getGridSize]);
 }
 
 #pragma mark - UIScrollViewDelegate

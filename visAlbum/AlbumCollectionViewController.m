@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSArray *sectionFetchResults;
 @property (weak, nonatomic) IBOutlet UIStepper *zoomControl;
+@property (strong, nonatomic) NSArray *zoomStep;
 @property (strong, nonatomic) NSMutableArray *data;
 
 //@property CGPoint location;
@@ -38,6 +39,7 @@ static NSString * const reuseIdentifier = @"Cell";
     // Do any additional setup after loading the view.
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     self.title = @"Albums";
+    self.zoomStep = [NSArray arrayWithObjects:@0, @65, @85, @115, @180, nil];
 //    self.zoom.minimumPressDuration = 0.3;
 //    self.zoom.numberOfTouchesRequired = 1;
 }
@@ -74,7 +76,17 @@ static NSString * const CollectionSegue = @"showCollection";
 }
 
 - (IBAction)zoomView:(UIStepper *)sender {
-    [self.collectionView reloadData];
+    if (sender.value<1) {
+        ;
+    } else {
+        [self.collectionView reloadData];
+    }
+}
+
+- (CGFloat)getGridSize {
+    NSUInteger index = (int)self.zoomControl.value;
+    NSNumber *size = [self.zoomStep objectAtIndex:index];
+    return [size floatValue];
 }
 
 //- (IBAction)zoomViewByGesture:(UILongPressGestureRecognizer *)sender {
@@ -215,7 +227,7 @@ static NSString * const CollectionSegue = @"showCollection";
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.zoomControl.value, self.zoomControl.value+20);
+    return CGSizeMake([self getGridSize], [self getGridSize]+20);
 }
 
 #pragma mark - PHPhotoLibraryChangeObserver

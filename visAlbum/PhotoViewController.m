@@ -84,15 +84,18 @@
 
 - (void)resetView {
     [self.imageView sizeToFit];
-    self.imageView.frame = CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height);
-    self.scrollView.contentSize = self.imageView.image ? self.imageView.image.size : CGSizeZero;
     
     CGSize imageViewSize = self.imageView.bounds.size;
     CGSize scrollViewSize = self.scrollView.bounds.size;
     self.scale = MIN(scrollViewSize.width/imageViewSize.width, scrollViewSize.height/imageViewSize.height);
     
-    self.scrollView.minimumZoomScale = 0.8*self.scale;
-    self.scrollView.maximumZoomScale = 2*self.scale;
+    //CGFloat paddingLeft = (self.view.frame.size.width-self.imageView.image.size.width*self.scale)/2;
+    //CGFloat paddingTop = (self.view.frame.size.height-self.imageView.image.size.height*self.scale-44)/2;
+    self.imageView.frame = CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height);
+    self.scrollView.contentSize = self.imageView.image.size;
+    
+    self.scrollView.minimumZoomScale = self.scale;
+    self.scrollView.maximumZoomScale = 3*self.scale;
     [self.scrollView setZoomScale:self.scale animated:YES];
 }
 
