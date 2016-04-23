@@ -34,15 +34,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self createEditableCopyOfDatabaseIfNeeded];
+    self.title = @"metadata";
     
+    [self createEditableCopyOfDatabaseIfNeeded];
     self.photoTags = [[NSMutableDictionary alloc] initWithContentsOfFile:[self applicationDocumentsDirectoryFile]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    
     
     NSDictionary *exif = [self.metadata valueForKey:@"{Exif}"];
     NSDictionary *gps = [self.metadata valueForKey:@"{GPS}"];
@@ -100,7 +99,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     CGRect frame = textField.frame;
-    int offset = frame.origin.y + 32 - (self.view.frame.size.height - 256.0); //key board height: 216
+    int offset = frame.origin.y + 32 - (self.view.frame.size.height - 280.0); //key board height: 216
     
     NSTimeInterval animationDuration = 0.30f;
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
