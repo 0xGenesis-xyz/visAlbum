@@ -42,6 +42,7 @@
 		38BDE3851CCA43C000E3E11D /* UIScrollView+UITouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BDE3841CCA43C000E3E11D /* UIScrollView+UITouch.m */; };
 		38BDE3881CCA552200E3E11D /* UIImage+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BDE3871CCA552200E3E11D /* UIImage+Extensions.m */; };
 		38BDE38B1CCBC52500E3E11D /* AlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BDE38A1CCBC52500E3E11D /* AlbumTableViewController.m */; };
+		38BDE38E1CCCA41000E3E11D /* AlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BDE38D1CCCA41000E3E11D /* AlbumTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,8 @@
 		38BDE3871CCA552200E3E11D /* UIImage+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extensions.m"; sourceTree = "<group>"; };
 		38BDE3891CCBC52500E3E11D /* AlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewController.h; sourceTree = "<group>"; };
 		38BDE38A1CCBC52500E3E11D /* AlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewController.m; sourceTree = "<group>"; };
+		38BDE38C1CCCA41000E3E11D /* AlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewCell.h; sourceTree = "<group>"; };
+		38BDE38D1CCCA41000E3E11D /* AlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,8 @@
 				384D24DD1CC62805003C6430 /* AlbumCollectionViewCell.m */,
 				38BDE3891CCBC52500E3E11D /* AlbumTableViewController.h */,
 				38BDE38A1CCBC52500E3E11D /* AlbumTableViewController.m */,
+				38BDE38C1CCCA41000E3E11D /* AlbumTableViewCell.h */,
+				38BDE38D1CCCA41000E3E11D /* AlbumTableViewCell.m */,
 				384D24B51CC5163F003C6430 /* PhotoCollectionViewController.h */,
 				384D24B61CC5163F003C6430 /* PhotoCollectionViewController.m */,
 				384D24B81CC51A93003C6430 /* PhotoCollectionViewCell.h */,
@@ -301,6 +306,7 @@
 				384D24EF1CC8BE44003C6430 /* MetadataViewController.m in Sources */,
 				384D24A31CC4D1F0003C6430 /* AppDelegate.m in Sources */,
 				384D24A01CC4D1F0003C6430 /* main.m in Sources */,
+				38BDE38E1CCCA41000E3E11D /* AlbumTableViewCell.m in Sources */,
 				384D24E61CC62920003C6430 /* NSIndexSet+Convenience.m in Sources */,
 				38BDE3851CCA43C000E3E11D /* UIScrollView+UITouch.m in Sources */,
 				384D24DE1CC62805003C6430 /* AlbumCollectionViewCell.m in Sources */,

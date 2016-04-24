@@ -9,7 +9,6 @@
 #import <Photos/Photos.h>
 #import "AlbumCollectionViewController.h"
 #import "AlbumCollectionViewCell.h"
-#import "AlbumTableViewController.h"
 #import "PhotoCollectionViewController.h"
 
 @interface AlbumCollectionViewController () <PHPhotoLibraryChangeObserver>
@@ -38,8 +37,6 @@ static NSString * const reuseIdentifier = @"Cell";
     //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    self.title = @"Albums";
 //    self.zoom.minimumPressDuration = 0.3;
 //    self.zoom.numberOfTouchesRequired = 1;
 }

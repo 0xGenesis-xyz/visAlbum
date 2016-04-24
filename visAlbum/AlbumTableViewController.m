@@ -8,12 +8,15 @@
 
 #import <Photos/Photos.h>
 #import "AlbumTableViewController.h"
-#import "AlbumCollectionViewController.h"
+#import "AlbumTableViewCell.h"
+#import "PhotoCollectionViewController.h"
 
 @interface AlbumTableViewController () <PHPhotoLibraryChangeObserver>
 
 @property (nonatomic, strong) NSArray *sectionFetchResults;
 @property (nonatomic, strong) NSArray *sectionLocalizedTitles;
+
+@property (strong, nonatomic) NSMutableArray *data;
 
 @end
 
@@ -82,18 +85,32 @@ static NSString * const CollectionSegue = @"showCollection";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = nil;
+    AlbumTableViewCell *cell = nil;
+    NSInteger num;
+    PHFetchResult *fetchResult = self.sectionFetchResults[indexPath.section];
     
     if (indexPath.section == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:AllPhotosReuseIdentifier forIndexPath:indexPath];
-        cell.textLabel.text = NSLocalizedString(@"All Photos", @"");
+        cell.name.text = NSLocalizedString(@"All Photos", @"");
+        num = fetchResult.count;
     } else {
         PHFetchResult *fetchResult = self.sectionFetchResults[indexPath.section];
         PHCollection *collection = fetchResult[indexPath.row];
         
         cell = [tableView dequeueReusableCellWithIdentifier:CollectionCellReuseIdentifier forIndexPath:indexPath];
-        cell.textLabel.text = collection.localizedTitle;
+        cell.name.text = [NSString stringWithString:collection.localizedTitle];
+        
+        PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
+        PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+        num = assetsFetchResult.count;
     }
+    cell.cover.image = [UIImage imageNamed:self.data[indexPath.item]];
+    cell.num.text = [NSString stringWithFormat:@"%ld", (long)num];
+    cell.albumTag.text = @"Add album description";
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    cell.date.text = [dateFormatter stringFromDate:[NSDate date]];
     
     return cell;
 }
@@ -136,15 +153,41 @@ static NSString * const CollectionSegue = @"showCollection";
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.destinationViewController isKindOfClass:[PhotoCollectionViewController class]] && [sender isKindOfClass:[UITableViewCell class]]) {
+        PhotoCollectionViewController *photoCollectionViewController = segue.destinationViewController;
+        AlbumTableViewCell *cell = sender;
+        
+        // Set the title of the AAPLAssetGridViewController.
+        photoCollectionViewController.title = cell.name.text;
+        
+        // Get the PHFetchResult for the selected section.
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        PHFetchResult *fetchResult = self.sectionFetchResults[indexPath.section];
+        
+        if ([segue.identifier isEqualToString:AllPhotosSegue]) {
+            photoCollectionViewController.assetsFetchResults = fetchResult;
+        } else if ([segue.identifier isEqualToString:CollectionSegue]) {
+            // Get the PHAssetCollection for the selected row.
+            PHCollection *collection = fetchResult[indexPath.row];
+            if (![collection isKindOfClass:[PHAssetCollection class]]) {
+                return;
+            }
+            
+            // Configure the AAPLAssetGridViewController with the asset collection.
+            PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
+            PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+            
+            photoCollectionViewController.assetsFetchResults = assetsFetchResult;
+            photoCollectionViewController.assetCollection = assetCollection;
+        }
+    }
 }
-*/
 
 #pragma mark - PHPhotoLibraryChangeObserver
 
@@ -173,6 +216,18 @@ static NSString * const CollectionSegue = @"showCollection";
         }
         
     });
+}
+
+- (NSMutableArray *)data{
+    if (!_data) {
+        _data = @[].mutableCopy;
+        for (int i = 1; i < 16; i ++) {
+            [_data addObject:[NSString stringWithFormat:@"zrx%d.jpg", i]];
+        }
+        [_data addObjectsFromArray:_data];
+        [_data addObjectsFromArray:_data];
+    }
+    return _data;
 }
 
 @end
