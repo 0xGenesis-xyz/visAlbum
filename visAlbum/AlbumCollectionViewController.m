@@ -9,12 +9,13 @@
 #import <Photos/Photos.h>
 #import "AlbumCollectionViewController.h"
 #import "AlbumCollectionViewCell.h"
+#import "AlbumTableViewController.h"
 #import "PhotoCollectionViewController.h"
 
 @interface AlbumCollectionViewController () <PHPhotoLibraryChangeObserver>
 
 @property (strong, nonatomic) NSArray *sectionFetchResults;
-@property (weak, nonatomic) IBOutlet UIStepper *zoomControl;
+
 @property (strong, nonatomic) NSArray *zoomStep;
 @property (strong, nonatomic) NSMutableArray *data;
 
@@ -39,7 +40,6 @@ static NSString * const reuseIdentifier = @"Cell";
     // Do any additional setup after loading the view.
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     self.title = @"Albums";
-    self.zoomStep = [NSArray arrayWithObjects:@0, @65, @85, @115, @180, nil];
 //    self.zoom.minimumPressDuration = 0.3;
 //    self.zoom.numberOfTouchesRequired = 1;
 }
@@ -75,12 +75,8 @@ static NSString * const CollectionSegue = @"showCollection";
     [[PHPhotoLibrary sharedPhotoLibrary] unregisterChangeObserver:self];
 }
 
-- (IBAction)zoomView:(UIStepper *)sender {
-    if (sender.value<1) {
-        ;
-    } else {
-        [self.collectionView reloadData];
-    }
+- (void)zoomView {
+    [self.collectionView reloadData];
 }
 
 - (CGFloat)getGridSize {
@@ -138,7 +134,7 @@ static NSString * const CollectionSegue = @"showCollection";
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                     //[self performSegueWithIdentifier:@"CollectionSegue" sender:self];;
                 }];
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
                 
                 [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                     textField.secureTextEntry = YES;
@@ -285,6 +281,20 @@ static NSString * const CollectionSegue = @"showCollection";
         [_data addObjectsFromArray:_data];
     }
     return _data;
+}
+
+- (NSArray *)zoomStep {
+    if (!_zoomStep) {
+        _zoomStep = [NSArray arrayWithObjects:@0, @65, @85, @115, @180, nil];
+    }
+    return _zoomStep;
+}
+
+- (UIStepper *)zoomControl {
+    if (!_zoomControl) {
+        _zoomControl = [[UIStepper alloc] init];
+    }
+    return _zoomControl;
 }
 
 @end

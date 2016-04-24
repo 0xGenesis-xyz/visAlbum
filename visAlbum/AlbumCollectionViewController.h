@@ -10,4 +10,8 @@
 
 @interface AlbumCollectionViewController : UICollectionViewController
 
+@property (strong, nonatomic) UIStepper *zoomControl;
+
+- (void)zoomView;
+
 @end

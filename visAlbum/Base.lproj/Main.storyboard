@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pX5-af-DM6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lVC-nz-SmQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -19,15 +19,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="lCQ-ZZ-na6">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="jBT-To-ktp">
+                            <stepper key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="4" id="Phj-az-Gow">
+                                <rect key="frame" x="486" y="7" width="94" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="zoomView:" destination="BYZ-38-t0r" eventType="valueChanged" id="3RF-3b-ora"/>
+                                </connections>
+                            </stepper>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="zoomControl" destination="Phj-az-Gow" id="doT-SH-e88"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-59" y="362"/>
+            <point key="canvasLocation" x="1735" y="362"/>
         </scene>
         <!--Album Collection View Controller-->
         <scene sceneID="UAy-ge-4Rp">
             <objects>
-                <collectionViewController id="deR-Db-s7w" customClass="AlbumCollectionViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="CollectionVC" id="deR-Db-s7w" customClass="AlbumCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Vbe-zm-fZe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,7 +54,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AllPhotosCell" id="uVB-YZ-foA" customClass="AlbumCollectionViewCell">
-                                <rect key="frame" x="0.0" y="64" width="80" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
@@ -77,7 +91,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionCell" id="FNw-oq-UrM" customClass="AlbumCollectionViewCell">
-                                <rect key="frame" x="104" y="64" width="80" height="100"/>
+                                <rect key="frame" x="104" y="0.0" width="80" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
@@ -119,24 +133,10 @@
                             <outlet property="delegate" destination="deR-Db-s7w" id="DuO-i5-Aex"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Kpm-JT-qAu">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="FE8-6P-k6P">
-                            <stepper key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="4" id="PzM-2L-w3V">
-                                <rect key="frame" x="486" y="7" width="94" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="zoomView:" destination="deR-Db-s7w" eventType="valueChanged" id="3lb-rr-yOj"/>
-                                </connections>
-                            </stepper>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="zoomControl" destination="PzM-2L-w3V" id="IP2-JD-4IY"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WEd-tU-V0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1712" y="-94"/>
+            <point key="canvasLocation" x="2524" y="-94"/>
         </scene>
         <!--Photo Collection View Controller-->
         <scene sceneID="o7V-Kv-dDz">
@@ -154,7 +154,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="fED-pU-boo" customClass="PhotoCollectionViewCell">
-                                <rect key="frame" x="0.0" y="64" width="80" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -200,7 +200,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3bC-sY-bIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2532" y="362"/>
+            <point key="canvasLocation" x="3520" y="362"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="nEm-kg-lwS">
@@ -250,7 +250,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3366" y="362"/>
+            <point key="canvasLocation" x="4354" y="362"/>
         </scene>
         <!--Metadata View Controller-->
         <scene sceneID="YLE-cc-dd7">
@@ -456,32 +456,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7JY-bP-9pY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4219" y="362"/>
+            <point key="canvasLocation" x="5207" y="362"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Album Table View Controller-->
         <scene sceneID="Bmc-uA-Ula">
             <objects>
-                <tableViewController id="QkC-6B-OWk" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TableVC" id="QkC-6B-OWk" customClass="AlbumTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="DQ0-WH-n9a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iPI-pf-rq9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllPhotosCell" id="iPI-pf-rq9">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iPI-pf-rq9" id="2kg-Kr-PGs">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="hM2-qv-RzN" kind="show" identifier="showAllPhotos" id="seE-xQ-wbc"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hmU-GZ-16J">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectionCell" id="hmU-GZ-16J">
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hmU-GZ-16J" id="3DM-hV-oVc">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="hM2-qv-RzN" kind="show" identifier="showCollection" id="BaU-tP-tNG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -492,28 +498,28 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wah-WB-Pz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="843"/>
+            <point key="canvasLocation" x="2524" y="843"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="ilA-Ei-C6M">
+        <scene sceneID="iA7-tf-XMO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pX5-af-DM6" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lVC-nz-SmQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kGe-XF-aUk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MJT-WB-qDq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="deR-Db-s7w" kind="relationship" relationship="rootViewController" id="DGk-7I-Qva"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1ed-dg-h8g"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Q8-Ur-dDC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7p-tZ-edv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="-94"/>
+            <point key="canvasLocation" x="923" y="362"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9Jy-jk-jcJ"/>
+        <segue reference="seE-xQ-wbc"/>
     </inferredMetricsTieBreakers>
 </document>

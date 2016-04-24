@@ -39,7 +39,6 @@ static NSString * const reuseIdentifier = @"Cell";
     //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
-    self.zoomStep = [NSArray arrayWithObjects:@0, @70, @90, @120, @185, nil];
 //    self.zoom.minimumPressDuration = 0.3;
 //    self.zoom.numberOfTouchesRequired = 1;
 }
@@ -329,6 +328,13 @@ static NSString * const CellReuseIdentifier = @"Cell";
     }
     
     return assets;
+}
+
+- (NSArray *)zoomStep {
+    if (!_zoomStep) {
+        _zoomStep = [NSArray arrayWithObjects:@0, @70, @90, @120, @185, nil];
+    }
+    return _zoomStep;
 }
 
 @end
