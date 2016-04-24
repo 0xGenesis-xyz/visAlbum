@@ -26,9 +26,14 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     self.title = @"Albums";
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.albumCollectionViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CollectionVC"];
     self.albumTableViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TableVC"];
+    
+    CGFloat padding = [[UIApplication sharedApplication] statusBarFrame].size.height+self.navigationController.navigationBar.frame.size.height;
+    self.albumCollectionViewController.collectionView.contentInset = UIEdgeInsetsMake(padding, 0, 0, 0);
+    self.albumTableViewController.tableView.contentInset = UIEdgeInsetsMake(padding, 0, 0, 0);
     
     self.albumCollectionViewController.zoomControl.value = self.zoomControl.value;
     [self addChildViewController:self.albumCollectionViewController];

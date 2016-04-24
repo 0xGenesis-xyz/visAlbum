@@ -129,7 +129,7 @@ static NSString * const CollectionSegue = @"showCollection";
             if ([cell.name.text isEqualToString:@"QQ"]) {
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Private Album" message:@"Please enter password" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                    //[self performSegueWithIdentifier:@"CollectionSegue" sender:self];;
+                    //[self performSegueWithIdentifier:@"CollectionSegue" sender:self];
                 }];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
                 
