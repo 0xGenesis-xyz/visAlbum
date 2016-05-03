@@ -173,6 +173,22 @@ static NSString * const CollectionSegue = @"showCollection";
         if ([segue.identifier isEqualToString:AllPhotosSegue]) {
             photoCollectionViewController.assetsFetchResults = fetchResult;
         } else if ([segue.identifier isEqualToString:CollectionSegue]) {
+            if ([cell.name.text isEqualToString:@"QQ"]) {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Private Album" message:@"Please enter password" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    //[self performSegueWithIdentifier:@"CollectionSegue" sender:self];
+                }];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
+                
+                [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                    textField.secureTextEntry = YES;
+                }];
+                [alertController addAction:okAction];
+                [alertController addAction:cancelAction];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+            }
+            
             // Get the PHAssetCollection for the selected row.
             PHCollection *collection = fetchResult[indexPath.row];
             if (![collection isKindOfClass:[PHAssetCollection class]]) {

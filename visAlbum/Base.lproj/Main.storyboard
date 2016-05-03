@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lVC-nz-SmQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lVC-nz-SmQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -234,7 +234,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mMY-JM-WTW">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="II1-6F-YQw">
+                        <barButtonItem key="rightBarButtonItem" title="Attribute" style="plain" id="II1-6F-YQw">
                             <connections>
                                 <segue destination="0nH-CB-X1J" kind="show" id="SiZ-5d-qHR"/>
                             </connections>
